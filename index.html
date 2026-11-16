@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ديون معرض دجلة</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f9f4;--card:#fbfefb;--ink:#12301f;--mut:#6b7f72;--g:#4fb36a;--gd:#1f6b3a;--gl:#e3f3e7;--y:#e6b422;--yl:#fbf1d3;--line:#d3e7d8;--red:#b83a2c;--redl:#fbe4e0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a12;--card:#16261b;--ink:#e6f4ea;--mut:#9bb3a2;--gl:#1c3324;--yl:#3a3216;--line:#27422f;--redl:#3b1d19;--red:#f08a7d}}
+:root[data-theme="dark"]{--bg:#0e1a12;--card:#16261b;--ink:#e6f4ea;--mut:#9bb3a2;--gl:#1c3324;--yl:#3a3216;--line:#27422f;--redl:#3b1d19;--red:#f08a7d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;font-size:16px}
+#app{max-width:520px;margin:0 auto;padding:0 16px 40px}
+header{display:flex;align-items:center;gap:10px;padding:14px 0}
+header h2{margin:0;font-size:22px;font-weight:800;color:var(--gd)}
+.ib{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;cursor:pointer;margin-inline-start:auto}
+.date{color:var(--g);font-weight:500;margin-top:8px}
+h1{margin:2px 0 6px;font-size:36px;font-weight:800;line-height:1.2}
+.sub{color:var(--mut);margin:0 0 18px}
+.hero{display:flex;align-items:center;gap:14px;width:100%;text-align:start;padding:18px;border:1px solid var(--g);border-radius:28px;background:linear-gradient(135deg,var(--gl),var(--card));color:var(--ink);font-family:inherit;cursor:pointer;position:relative;overflow:hidden}
+.hero .ic{flex:none;width:70px;height:70px;border-radius:22px;background:var(--g);display:grid;place-items:center;font-size:34px;color:#fff}
+.hero b{display:block;font-size:24px}.hero span{color:var(--mut);font-size:15px}
+.hero i{position:absolute;inset:auto 18px 10px;height:10px;border-bottom:3px solid var(--y);background:repeating-linear-gradient(90deg,var(--y) 0 2px,transparent 2px 12px);opacity:.9}
+.hero{padding-bottom:34px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.st{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px}
+.st small{color:var(--mut);font-size:14px}.st div{font-size:30px;font-weight:800;margin-top:6px}
+.st.r div{color:var(--red)}.st.g div{color:var(--gd)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:16px 6px;text-align:center;font:700 16px 'Tajawal',sans-serif;color:var(--ink);cursor:pointer}
+.tile u{display:grid;place-items:center;width:54px;height:54px;margin:0 auto 10px;border-radius:18px;background:var(--gl);border:1px solid var(--line);font-size:26px;text-decoration:none}
+.tile.y u{background:var(--yl)}
+label{display:block;font-weight:700;margin:14px 0 6px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--g)}
+.row{display:grid;grid-template-columns:2fr 1fr 1.2fr auto;gap:6px;align-items:center;margin-bottom:8px}
+.row input{padding:10px 8px;border-radius:12px;min-width:0}
+.row b{font-size:13px;white-space:nowrap}
+.row button{border:0;background:var(--redl);color:var(--red);border-radius:10px;width:30px;height:30px;font-size:16px}
+.btn{display:block;width:100%;border:0;border-radius:18px;padding:15px;margin-top:14px;font:800 18px 'Tajawal',sans-serif;background:var(--g);color:#fff;cursor:pointer}
+.btn.o{background:var(--card);color:var(--gd);border:1px solid var(--g)}
+.tot{display:flex;justify-content:space-between;padding:14px 16px;margin-top:6px;border-radius:18px;background:var(--yl);font-weight:800;font-size:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px 16px;margin-bottom:10px}
+.cu{display:flex;justify-content:space-between;align-items:center;width:100%;font:inherit;color:inherit;text-align:start;cursor:pointer}
+.cu small{color:var(--mut);display:block}
+.pos{color:var(--red);font-weight:800}.zero{color:var(--gd);font-weight:800}
+.tx{border-bottom:1px dashed var(--line);padding:10px 0}.tx:last-child{border:0}
+.tx .h{display:flex;justify-content:space-between;font-weight:700}
+.tx small{color:var(--mut)}
+.tag{display:inline-block;padding:1px 10px;border-radius:99px;font-size:13px;margin-inline-end:6px}
+.tag.d{background:var(--redl);color:var(--red)}.tag.p{background:var(--gl);color:var(--gd)}
+.del{border:0;background:none;color:var(--mut);font:inherit;font-size:13px;cursor:pointer;padding:2px 0}
+.vch{border:2px solid var(--g);border-radius:22px;padding:20px;background:var(--card)}
+.vch h3{margin:0 0 12px;text-align:center;font-size:24px;color:var(--gd)}
+.vch p{display:flex;justify-content:space-between;margin:8px 0;gap:10px}
+.empty{text-align:center;color:var(--mut);padding:26px 0}
+#toast{position:fixed;inset:auto 0 calc(24px + env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:90%;background:var(--gd);color:#fff;padding:10px 18px;border-radius:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+#toast.on{opacity:1}
+.pd{position:absolute;top:0;left:-10000px;width:794px;padding:40px;background:#fff;color:#111;font-family:'Tajawal',sans-serif;direction:rtl;font-size:16px}
+.pd .ph{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #4fb36a;padding-bottom:10px;margin-bottom:18px;font-size:28px;color:#1f6b3a}
+.pd .ph span{font-size:20px;color:#111}
+.pd table{width:100%;border-collapse:collapse;margin:12px 0}
+.pd th{background:#e3f3e7;color:#1f6b3a}
+.pd th,.pd td{border:1px solid #cfe3d4;padding:8px 10px;text-align:right}
+.pd .tt{background:#fbf1d3;font-weight:800;padding:12px 16px;display:flex;justify-content:space-between;margin-top:10px;border-radius:8px;font-size:20px}
+.pd p{display:flex;justify-content:space-between;margin:10px 0;font-size:18px}
+.pd .pf{margin-top:24px;color:#777;font-size:13px;text-align:center}
+.pd .vb{border:2px solid #4fb36a;border-radius:14px;padding:20px}
+@media print{header,.btn,.ib,#toast{display:none}}
+</style>
+</head>
+<body>
+<div id="app"></div><div id="toast"></div>
+<script>
+let db={c:[],t:[],n:1},view='home',sel=0,rows=[{}],pend=0;
+try{const s=localStorage.getItem('dijla-debts');if(s)db=JSON.parse(s)}catch(e){}
+const save=()=>{try{localStorage.setItem('dijla-debts',JSON.stringify(db))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const f=n=>(+n||0).toLocaleString('en-US',{maximumFractionDigits:2});
+const m=n=>f(n)+'$';
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const sum=(id,k)=>db.t.filter(t=>t.c===id&&(!k||t.k===k)).reduce((a,t)=>a+t.a,0);
+const bal=id=>sum(id,'d')-sum(id,'p');
+const rt=r=>(+r.q||1)*(+r.p||0);
+const cn=id=>(db.c.find(c=>c.id===id)||{}).name||'';
+const toast=t=>{const e=$('#toast');e.textContent=t;e.className='on';setTimeout(()=>e.className='',2000)};
+function go(v,id){view=v;if(id!==undefined)sel=id;pend=0;render();scrollTo(0,0)}
+function head(t){return `<header><h2>${t}</h2><button class="ib" onclick="go('home')" aria-label="رجوع">→</button></header>`}
+function opts(){return db.c.map(c=>`<option value="${c.id}" ${c.id===sel?'selected':''}>${esc(c.name)} (${m(bal(c.id))})</option>`).join('')}
+function render(){
+ const A=$('#app');
+ if(view==='home'){
+  const D=db.t.filter(t=>t.k==='d').reduce((a,t)=>a+t.a,0),P=db.t.filter(t=>t.k==='p').reduce((a,t)=>a+t.a,0),n=db.c.filter(c=>bal(c.id)>0).length;
+  A.innerHTML=`<header><h2>معرض دجلة</h2></header>
+  <div class="date">${new Date().toLocaleDateString('ar-IQ-u-nu-latn',{weekday:'long',day:'numeric',month:'long'})}</div>
+  <h1>سجل الديون</h1><p class="sub">${n?`عندك ${n} زبون عليهم ديون`:'لا توجد ديون مسجلة'}</p>
+  <button class="hero" onclick="go('add')"><div class="ic">＋</div><div><b>إضافة حساب</b><span>اكتب التفاصيل والأسعار واحفظها على الزبون</span></div><i></i></button>
+  <div class="grid"><div class="st"><small>الزبائن</small><div>${db.c.length}</div></div><div class="st"><small>إجمالي الديون</small><div>${m(D)}</div></div><div class="st g"><small>المقبوض</small><div>${m(P)}</div></div><div class="st r"><small>المتبقي</small><div>${m(D-P)}</div></div></div>
+  <div class="tiles"><button class="tile" onclick="go('pay')"><u>🧾</u>سند قبض</button><button class="tile" onclick="go('stmt',db.c[0]?db.c[0].id:0)"><u>📑</u>كشف حساب</button><button class="tile y" onclick="go('cust')"><u>👥</u>الزبائن</button></div>
+  <button class="btn o" onclick="go('gh')">☁️ نسخ احتياطي GitHub</button>`;
+ }
+ else if(view==='add'){
+  A.innerHTML=head('إضافة حساب')+`<label>اسم الزبون</label><input id="nm" list="nl" placeholder="اكتب الاسم أو اختر زبون سابق"><datalist id="nl">${db.c.map(c=>`<option value="${esc(c.name)}">`).join('')}</datalist>
+  <label>رقم الهاتف (اختياري)</label><input id="ph" type="tel" inputmode="tel">
+  <label>التاريخ</label><input id="dt" type="date" value="${today()}">
+  <label>التفاصيل والأسعار</label><div id="rows"></div>
+  <button class="btn o" style="margin-top:0" onclick="rows.push({});rr()">＋ إضافة بند</button>
+  <div class="tot"><span>المجموع</span><span id="tot">0$</span></div>
+  <label>ملاحظة</label><input id="nt"><button class="btn" onclick="saveAdd()">حفظ الحساب</button><button class="btn o" onclick="saveAdd(1)">حفظ وتصدير PDF</button>`;rr();
+ }
+ else if(view==='pay'){
+  if(!db.c.length){A.innerHTML=head('سند قبض')+'<div class="empty">أضف حساباً لزبون أولاً</div>';return}
+  A.innerHTML=head('سند قبض')+`<label>الزبون</label><select id="cs" onchange="sel=+this.value;pb()">${opts()}</select>
+  <div class="tot"><span>الدين الحالي</span><span id="cb"></span></div>
+  <label>المبلغ المقبوض</label><input id="am" type="number" inputmode="decimal" placeholder="0">
+  <label>التاريخ</label><input id="dt" type="date" value="${today()}">
+  <label>ملاحظة</label><input id="nt"><button class="btn" onclick="savePay()">حفظ وإصدار السند</button>`;
+  if(!sel)sel=db.c[0].id;$('#cs').value=sel;pb();
+ }
+ else if(view==='gh'){
+  const g=ghc();
+  A.innerHTML=head('نسخ احتياطي GitHub')+`<p class="sub">البيانات تُحفظ في مستودع خاص (Private) باسمك.</p>
+  <label>المستودع (اسم المستخدم/اسم المستودع)</label><input id="gr" dir="ltr" placeholder="username/dijla-data" value="${esc(g.repo)}">
+  <label>التوكن (Fine-grained، صلاحية Contents: Read and write)</label><input id="gt" dir="ltr" type="password" value="${esc(g.token)}">
+  <button class="btn" onclick="ghBackup()">⬆️ حفظ نسخة احتياطية الآن</button><button class="btn o" onclick="ghRestore()">⬇️ استرجاع آخر نسخة</button>`;
+ }
+ else if(view==='vch'){
+  const t=db.t.find(x=>x.id===sel);if(!t)return go('home');
+  const left=db.t.filter(x=>x.c===t.c&&x.id<=t.id).reduce((a,x)=>a+(x.k==='d'?x.a:-x.a),0);
+  A.innerHTML=head('سند قبض')+`<div class="vch"><h3>سند قبض رقم ${t.no}</h3><p><span>التاريخ</span><b>${t.d}</b></p><p><span>استلمنا من</span><b>${esc(cn(t.c))}</b></p><p><span>المبلغ</span><b>${m(t.a)}</b></p>${t.note?`<p><span>ملاحظة</span><b>${esc(t.note)}</b></p>`:''}<p><span>المتبقي بعد القبض</span><b class="${left>0?'pos':'zero'}">${m(left)}</b></p></div>
+  <button class="btn" onclick="share(vtxt(${t.id}))">مشاركة</button><button class="btn o" onclick="pdfV(${t.id})">تصدير PDF</button>`;
+ }
+ else if(view==='cust'){
+  A.innerHTML=head('الزبائن')+(db.c.length?db.c.map(c=>`<div class="card"><button class="cu" onclick="go('stmt',${c.id})"><span><b>${esc(c.name)}</b><small>${esc(c.phone||'')}</small></span><span class="${bal(c.id)>0?'pos':'zero'}">${m(bal(c.id))}</span></button></div>`).join(''):'<div class="empty">لا يوجد زبائن بعد</div>')+(db.c.length?'<button class="btn" onclick="pdfC()">تصدير جرد الزبائن PDF</button>':'');
+ }
+ else if(view==='stmt'){
+  if(!db.c.length){A.innerHTML=head('كشف حساب')+'<div class="empty">لا توجد حسابات بعد</div>';return}
+  if(!sel)sel=db.c[0].id;
+  const T=db.t.filter(t=>t.c===sel).sort((a,b)=>a.d.localeCompare(b.d)||a.id-b.id);let run=0;
+  const c=db.c.find(x=>x.id===sel)||{};
+  A.innerHTML=head('كشف حساب')+`<select onchange="sel=+this.value;render()">${opts()}</select>
+  <div class="grid"><div class="st"><small>إجمالي الديون</small><div>${m(sum(sel,'d'))}</div></div><div class="st g"><small>المقبوض</small><div>${m(sum(sel,'p'))}</div></div></div>
+  <div class="tot"><span>المتبقي على ${esc(c.name)}</span><span class="${bal(sel)>0?'pos':'zero'}">${m(bal(sel))}</span></div>
+  <div class="card" style="margin-top:12px">${T.length?T.map(t=>{run+=t.k==='d'?t.a:-t.a;return `<div class="tx"><div class="h"><span><span class="tag ${t.k}">${t.k==='d'?'دين':'قبض'}</span>${t.d}</span><span>${m(t.a)}</span></div>${(t.items||[]).map(r=>`<small>${esc(r.d||'بند')} × ${f(r.q||1)} = ${m(rt(r))}</small><br>`).join('')}${t.note?`<small>${esc(t.note)}</small><br>`:''}<small>الرصيد: ${m(run)}</small> <button class="del" onclick="del(${t.id})">${pend===t.id?'اضغط للتأكيد':'حذف'}</button> &nbsp; <button class="del" onclick="pdfT(${t.id})">PDF</button></div>`}).join(''):'<div class="empty">لا توجد حركات</div>'}</div>
+  <button class="btn" onclick="share(stxt())">مشاركة الكشف</button><button class="btn o" onclick="pdfS()">تصدير الكشف PDF</button>`;
+ }
+}
+function rr(){$('#rows').innerHTML=rows.map((r,i)=>`<div class="row"><input placeholder="التفاصيل" value="${esc(r.d)}" oninput="ru(${i},'d',this.value)"><input type="number" inputmode="decimal" placeholder="العدد" value="${r.q==null?'':r.q}" oninput="ru(${i},'q',this.value)"><input type="number" inputmode="decimal" placeholder="السعر" value="${r.p==null?'':r.p}" oninput="ru(${i},'p',this.value)"><button onclick="rows.length>1?rows.splice(${i},1):rows[0]={};rr()" aria-label="حذف">×</button></div>`).join('');tt()}
+function ru(i,k,v){rows[i][k]=k==='d'?v:v;tt()}
+function tt(){const e=$('#tot');if(e)e.textContent=m(rows.reduce((a,r)=>a+rt(r),0))}
+function pb(){$('#cb').textContent=m(bal(sel))}
+function saveAdd(x){
+ const name=$('#nm').value.trim(),items=rows.filter(r=>+r.p>0).map(r=>({d:r.d||'',q:+r.q||1,p:+r.p}));
+ if(!name)return toast('اكتب اسم الزبون');if(!items.length)return toast('أضف بنداً بسعر');
+ let c=db.c.find(x=>x.name===name);if(!c){c={id:db.n++,name,phone:''};db.c.push(c)}
+ const ph=$('#ph').value.trim();if(ph)c.phone=ph;
+ db.t.push({id:db.n++,c:c.id,k:'d',a:items.reduce((a,r)=>a+r.q*r.p,0),d:$('#dt').value||today(),items,note:$('#nt').value.trim()});
+ save();rows=[{}];const tid=db.t[db.t.length-1].id;toast('تم حفظ الحساب');go('stmt',c.id);if(x)pdfT(tid);
+}
+function savePay(){
+ const a=+$('#am').value;if(!(a>0))return toast('اكتب المبلغ');
+ const no=db.t.filter(t=>t.k==='p').length+1,id=db.n++;
+ db.t.push({id,c:sel,k:'p',a,no,d:$('#dt').value||today(),note:$('#nt').value.trim()});save();go('vch',id);
+}
+function del(id){if(pend!==id){pend=id;return render()}db.t=db.t.filter(t=>t.id!==id);pend=0;save();render()}
+function vtxt(id){const t=db.t.find(x=>x.id===id);return `معرض دجلة\nسند قبض رقم ${t.no}\nالتاريخ: ${t.d}\nاستلمنا من: ${cn(t.c)}\nالمبلغ: ${m(t.a)}\nالمتبقي: ${m(bal(t.c))}`}
+function stxt(){let r=0;return `معرض دجلة - كشف حساب ${cn(sel)}\n`+db.t.filter(t=>t.c===sel).sort((a,b)=>a.d.localeCompare(b.d)||a.id-b.id).map(t=>{r+=t.k==='d'?t.a:-t.a;return `${t.d} | ${t.k==='d'?'دين':'قبض'} ${m(t.a)} | الرصيد ${m(r)}`}).join('\n')+`\nالمتبقي: ${m(bal(sel))}`}
+async function share(t){try{if(navigator.share){await navigator.share({text:t});return}}catch(e){if(e.name==='AbortError')return}try{await navigator.clipboard.writeText(t);toast('تم نسخ النص')}catch(e){toast('تعذر المشاركة')}}
+async function mk(title,body,fn){
+ toast('جاري إنشاء الملف...');
+ const box=document.createElement('div');box.className='pd';
+ box.innerHTML=`<div class="ph"><b>معرض دجلة</b><span>${title}</span></div>${body}<div class="pf">${new Date().toLocaleDateString('ar-IQ-u-nu-latn')}</div>`;
+ document.body.appendChild(box);
+ try{
+    await document.fonts.ready;
+  const cv=await html2canvas(box,{scale:2,backgroundColor:'#ffffff'});
+  const doc=new window.jspdf.jsPDF('p','mm','a4'),pw=cv.width,ph=Math.floor(pw*297/210);
+  for(let y=0,i=0;y<cv.height;y+=ph,i++){
+   const c=document.createElement('canvas');c.width=pw;c.height=Math.min(ph,cv.height-y);
+   const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(cv,0,y,pw,c.height,0,0,pw,c.height);
+   if(i)doc.addPage();
+   doc.addImage(c.toDataURL('image/jpeg',.92),'JPEG',0,0,210,c.height*210/pw);
+  }
+  doc.save(fn.replace(/[\\/:*?"<>|]/g,'')+'.pdf');
+ }catch(e){if(!e||e.code!=='declined')toast('تعذر إنشاء الملف')}
+ finally{box.remove()}
+}
+const T3=(h,rs)=>`<table><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr>${rs.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</table>`;
+function pdfT(id){
+ const t=db.t.find(x=>x.id===id);if(!t)return;if(t.k==='p')return pdfV(id);
+ const c=db.c.find(x=>x.id===t.c)||{};
+ mk('حساب زبون',`<p><span>الزبون</span><b>${esc(c.name)}</b></p>${c.phone?`<p><span>الهاتف</span><b>${esc(c.phone)}</b></p>`:''}<p><span>التاريخ</span><b>${t.d}</b></p>`+T3(['التفاصيل','العدد','السعر','المجموع'],t.items.map(r=>[esc(r.d||'بند'),f(r.q),m(r.p),m(rt(r))]))+`<div class="tt"><span>المجموع</span><span>${m(t.a)}</span></div>`+(t.note?`<p><span>ملاحظة</span><b>${esc(t.note)}</b></p>`:''),'حساب '+c.name+' '+t.d);
+}
+function pdfV(id){
+ const t=db.t.find(x=>x.id===id);if(!t)return;
+ const left=db.t.filter(x=>x.c===t.c&&x.id<=t.id).reduce((a,x)=>a+(x.k==='d'?x.a:-x.a),0);
+ mk('سند قبض رقم '+t.no,`<div class="vb"><p><span>التاريخ</span><b>${t.d}</b></p><p><span>استلمنا من</span><b>${esc(cn(t.c))}</b></p><p><span>المبلغ</span><b>${m(t.a)}</b></p>${t.note?`<p><span>ملاحظة</span><b>${esc(t.note)}</b></p>`:''}<p><span>المتبقي بعد القبض</span><b>${m(left)}</b></p></div>`,'سند قبض '+t.no);
+}
+function pdfS(){
+ if(!sel)return;let r=0;
+ const T=db.t.filter(t=>t.c===sel).sort((a,b)=>a.d.localeCompare(b.d)||a.id-b.id);
+ mk('كشف حساب '+esc(cn(sel)),T3(['التاريخ','البيان','مدين','دائن','الرصيد'],T.map(t=>{r+=t.k==='d'?t.a:-t.a;return [t.d,t.k==='d'?(t.items||[]).map(i=>esc(i.d||'بند')).join('، '):'سند قبض'+(t.no?' '+t.no:''),t.k==='d'?m(t.a):'',t.k==='p'?m(t.a):'',m(r)]}))+`<div class="tt"><span>المتبقي</span><span>${m(bal(sel))}</span></div>`,'كشف '+cn(sel));
+}
+function pdfC(){
+ let D=0,P=0;
+ mk('جرد الزبائن',T3(['#','الزبون','الهاتف','الديون','المقبوض','المتبقي'],db.c.map((c,i)=>{const d=sum(c.id,'d'),p=sum(c.id,'p');D+=d;P+=p;return [i+1,esc(c.name),esc(c.phone||''),m(d),m(p),m(d-p)]}))+`<div class="tt"><span>إجمالي المتبقي (${db.c.length} زبون)</span><span>${m(D-P)}</span></div>`,'جرد الزبائن '+today());
+}
+const ghc=()=>{try{return Object.assign({repo:'',token:''},JSON.parse(localStorage.getItem('dijla-gh')||'{}'))}catch(e){return{repo:'',token:''}}};
+function ghIn(){const repo=$('#gr').value.trim(),token=$('#gt').value.trim();if(!/^[\w.-]+\/[\w.-]+$/.test(repo)||!token){toast('اكتب المستودع والتوكن');return null}try{localStorage.setItem('dijla-gh',JSON.stringify({repo,token}))}catch(e){}return{repo,token}}
+const ghU=g=>'https://api.github.com/repos/'+g.repo+'/contents/dijla-data.json';
+const ghH=g=>({Authorization:'Bearer '+g.token,Accept:'application/vnd.github+json'});
+async function ghBackup(){
+ const g=ghIn();if(!g)return;toast('جاري الحفظ...');
+ try{
+  let sha;const r=await fetch(ghU(g),{headers:ghH(g)});
+  if(r.ok)sha=(await r.json()).sha;else if(r.status!==404)throw 0;
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(db))));
+  const p=await fetch(ghU(g),{method:'PUT',headers:ghH(g),body:JSON.stringify({message:'backup '+new Date().toISOString(),content,sha})});
+  toast(p.ok?'تم حفظ النسخة الاحتياطية ✓':'فشل الحفظ، تحقق من التوكن والمستودع');
+ }catch(e){toast('تعذر الاتصال')}
+}
+async function ghRestore(){
+ const g=ghIn();if(!g)return;
+ if(!confirm('سيتم استبدال البيانات الحالية بآخر نسخة محفوظة. متابعة؟'))return;
+ try{
+  const r=await fetch(ghU(g),{headers:ghH(g)});if(!r.ok)return toast('لا توجد نسخة أو التوكن خاطئ');
+  const j=await r.json();
+  const d=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\s/g,'')))));
+  if(!d||!Array.isArray(d.c)||!Array.isArray(d.t))return toast('ملف غير صالح');
+  db=d;save();toast('تم الاسترجاع ✓');go('home');
+ }catch(e){toast('تعذر الاسترجاع')}
+}
+render();
+</script>
+</body>
+</html>
